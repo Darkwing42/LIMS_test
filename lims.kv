@@ -1,0 +1,127 @@
+<LoginScreen>:
+    canvas.before:
+        BorderImage:
+            source: "/home/darkwing/Downloads/wallpaper-retina-cinemadisplay.png"
+            pos: self.pos
+            size: self.size
+    GridLayout:
+        cols: 2
+        Label:
+            height: 50
+            size_hint_y: None
+            text: "Username:"
+        TextInput:
+            height: 50
+            size_hint_y: None
+            multiline: False
+        Label:
+            height: 50
+            size_hint_y: None
+            text: "Passwort:"
+        TextInput:
+            passwort: True
+            height: 50
+            size_hint_y: None
+            multiline: False
+        Button:
+            height: 50
+            size_hint_y: None
+            text: "Login"
+        Button:
+            height: 50
+            size_hint_y: None
+            text: "Register"
+            on_press: root.manager.current = "register"
+
+
+
+<RegisterScreen>:
+    username: username_input
+    passwort: passwort_input
+
+    canvas.before:
+        BorderImage:
+            source: "/home/darkwing/Downloads/wallpaper-retina-cinemadisplay.png"
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Label:
+            pos: 100, 500
+            height: 50
+            width: 50
+            size_hint_y: None
+            size_hint_x: None
+            text: "Username"
+        TextInput:
+            pos: 200, 500
+            height: 50
+            width: 150
+            size_hint_y: None
+            size_hint_x: None
+            multiline: False
+            id: username_input
+
+        Label:
+            pos: 100, 450
+            height: 50
+            width: 50
+            size_hint_y: None
+            size_hint_x: None
+            text: "Passwort"
+        TextInput:
+            pos: 200, 450
+            height: 50
+            width: 150
+            size_hint_y: None
+            size_hint_x: None
+            multiline: False
+            id: passwort_input
+
+        Label:
+            pos: 100, 400
+            height: 50
+            width: 50
+            size_hint_y: None
+            size_hint_x: None
+            text: "Passwort wiederholen"
+        TextInput:
+            pos: 200, 400
+            height: 50
+            width: 150
+            size_hint_y: None
+            size_hint_x: None
+        Button:
+            pos: 200, 350
+            height: 50
+            width: 150
+            size_hint_y: None
+            size_hint_x: None
+            text: "Speichern"
+            on_press: root.get_username_passwd()
+        Button:
+            height: 50
+            width: 100
+            size_hint_y: None
+            size_hint_x: None
+            text: "Zum Login"
+            on_press: root.manager.current = "Login"
+<Manager>:
+    id: screen_manager
+
+    login_screen: login_screen
+    register_screen: register_screen
+    #main_screen: main_screen
+
+
+
+    LoginScreen:
+        id: login_screen
+        name: "Login"
+        manager: screen_manager
+
+    RegisterScreen:
+        id: register_screen
+        name: "register"
+        manager: screen_manager
+
